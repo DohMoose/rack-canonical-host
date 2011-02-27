@@ -7,7 +7,7 @@ module Rack # :nodoc:
     end
 
     def call(env)
-      if url = url(env)
+      if url =~ /www\./ and url = url(env)
         [301, { 'Location' => url }, ['Redirecting...']]
       else
         @app.call(env)
