@@ -17,7 +17,7 @@ module Rack # :nodoc:
     def url(env)
       if (host = host(env)) && env['SERVER_NAME'] != host
         url = Rack::Request.new(env).url
-        url.sub(%r{\A(https?://)(.*?)(:\d+)?(/|$)}, "\\1#{host}\\3/")
+        url.sub(%r{\A(https?://)www(.*?)(:\d+)?(/|$)}, "\\1#{host}\\3/")
       end
     end
     private :url
